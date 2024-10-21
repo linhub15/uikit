@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm Button</title>
+    <link rel="stylesheet" href="../main.css" />
+</head>
+
+<body class="bg-gray-50">
+    <div class="max-w-md rounded-sm mx-auto my-20 space-y-4 shadow p-10 bg-white">
+        <div class="space-y-2">
+            <h1 class="text-xl text-red-600 font-medium">Delete all data?</h1>
+            <p>This is a permanent. Data cannot be restored.</p>
+        </div>
+
+        <button class="px-10 py-2 font-semibold rounded-md bg-red-500 text-white hover:bg-red-600 active:bg-red-700"
+            id="confirm-btn">
+            Press and hold to delete
+        </button>
+
+        <div class="w-0 bg-red-500 h-1 rounded-full transition-all" id="indicator-bar"></div>
+
+        <script>
+            const btn = document.getElementById("confirm-btn");
+            const bar = document.getElementById("indicator-bar");
+
+            let count = 0;
+            const max = 10;
+            let interval;
+
+            function increment() {
+                interval = setInterval(() => {
+                    count++;
+                    bar.style.width = `${(count / max) * 100}%`;
+                    if (count >= max) {
+                        alert("Deleted!");
+                        reset();
+                    }
+                }, 100);
+            }
+
+            function reset() {
+                clearInterval(interval);
+                count = 0;
+                bar.style.width = "0%";
+            }
+
+            btn.addEventListener("mousedown", () => increment());
+            btn.addEventListener("mouseup", () => reset());
+            btn.addEventListener("mouseout", () => reset());
+        </script>
+</body>
+
+</html>

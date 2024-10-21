@@ -1,0 +1,11 @@
+{
+  "tasks": {
+    "dev": "deno run -NR --watch main.ts",
+    "tailwind": "deno run -A npm:tailwindcss -i ./main.css -o ./components/main.css --watch"
+  },
+  "imports": {
+    "@std/assert": "jsr:@std/assert@1",
+    "@std/http": "jsr:@std/http@^1.0.8",
+    "tailwindcss": "npm:tailwindcss@^3.4.14"
+  }
+}
