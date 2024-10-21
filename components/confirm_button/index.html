@@ -15,7 +15,7 @@
             <p>This is a permanent. Data cannot be restored.</p>
         </div>
 
-        <button class="px-10 py-2 font-semibold rounded-md bg-red-500 text-white hover:bg-red-600 active:bg-red-700"
+        <button class="px-10 py-2 font-semibold rounded-md bg-red-500 text-white hover:bg-red-600 active:bg-red-700 select-none"
             id="confirm-btn">
             Press and hold to delete
         </button>
@@ -28,7 +28,7 @@
 
             let count = 0;
             const max = 10;
-            let interval;
+            let interval = NaN;
 
             function increment() {
                 interval = setInterval(() => {
@@ -50,6 +50,10 @@
             btn.addEventListener("mousedown", () => increment());
             btn.addEventListener("mouseup", () => reset());
             btn.addEventListener("mouseout", () => reset());
+
+            btn.addEventListener("touchstart", () => increment());
+            btn.addEventListener("touchend", () => reset());
+            btn.addEventListener("touchcancel", () => reset());
         </script>
 </body>
 
